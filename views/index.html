@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+      <link href="/public/css/bootstrap.min.css" rel="stylesheet">
+      <link href="/public/css/bootstrap-theme.min.css" rel="stylesheet">
+  </head>
+
+  <body class="container">
+    <h1>Get data without reload page by axios</h1>
+
+    <form role="form" class="form">
+      <div class="form-group">
+        <select id="data">
+          {% for item in data %}
+            <option value="{{item.type }}">{{ item.name }}</option>
+          {% endfor %}  
+        </select>
+      </div>
+    </form>
+
+    <div id="output" class="container"></div>
+
+    <script src="/public/js/axios.min.js"></script>
+    <script>
+      (function () {
+        var output = document.getElementById('output');
+        document.getElementById('data').onclick = function () {
+          var data = document.getElementById('data').value;
+          axios.post('/post/server',{data: data})
+            .then(function (res) {
+              console.log(res.data)
+              output.className = 'container';
+              output.innerHTML = res.data;
+            })
+            .catch(function (err) {
+              output.className = 'container text-danger';
+              output.innerHTML = err.message;
+            });
+        };
+      })();
+    </script>
+  </body>
+</html>

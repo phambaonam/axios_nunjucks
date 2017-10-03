@@ -1,0 +1,20 @@
+{
+  "name": "axios-demo",
+  "version": "1.0.0",
+  "description": "learn axios to send request to server and recive data which not reload page",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha -S"
+  },
+  "keywords": [
+    "axios",
+    "nodejs"
+  ],
+  "author": "Phambaonam",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.1",
+    "nunjucks": "^3.0.1"
+  }
+}
